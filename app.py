@@ -8,8 +8,14 @@ import sys
 import asyncio
 import json
 
-# Add backend to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "backend"))
+# Ensure backend package is prioritized over root app.py
+current_dir = os.path.abspath(os.path.dirname(__file__))
+backend_dir = os.path.join(current_dir, "backend")
+if backend_dir not in sys.path:
+    sys.path.insert(0, backend_dir)
+if current_dir in sys.path:
+    sys.path.remove(current_dir)
+    sys.path.append(current_dir)
 
 import gradio as gr
 from app.harness.orchestrator import orchestrator
@@ -129,7 +135,7 @@ body { background-color: #07090e; color: #f8fafc; }
 .gradio-container { max-width: 1200px !important; margin: auto; }
 """
 
-with gr.Blocks(theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"), css=custom_css, title="AuraVoice RAG - HH Goa 2026") as demo:
+with gr.Blocks(title="AuraVoice RAG - HH Goa 2026") as demo:
     gr.HTML("""
     <div style="text-align: center; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 20px;">
         <h1 style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
@@ -251,4 +257,4 @@ with gr.Blocks(theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"), 
             """)
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate"))
