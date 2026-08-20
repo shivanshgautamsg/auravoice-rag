@@ -1,3 +1,15 @@
+---
+title: AuraVoice RAG
+emoji: ⚡
+colorFrom: indigo
+colorTo: blue
+sdk: gradio
+app_file: app.py
+pinned: false
+license: mit
+short_description: Sub-200ms Voice-Enabled RAG with Sarvam AI STT & Guardrails
+---
+
 # ⚡ AuraVoice RAG: Voice-Enabled RAG System
 ### **HH Goa 2026 Shortlisting Task 2 — Winning Submission**
 `#RAGInGoa`
