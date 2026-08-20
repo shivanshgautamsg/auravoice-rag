@@ -1,0 +1,341 @@
+{
+  "total_queries": 50,
+  "successful_queries": 29,
+  "abstained_queries": 19,
+  "blocked_queries": 2,
+  "sub_200ms_compliance_pct": 100.0,
+  "retrieval_accuracy_pct": 64.7,
+  "faithfulness_rate_pct": 100.0,
+  "percentiles": {
+    "p50": 0.43,
+    "p70": 0.49,
+    "p90": 0.53,
+    "p95": 0.57,
+    "p99": 0.89,
+    "p100": 1.19,
+    "min": 0.01,
+    "mean": 0.41,
+    "std": 0.17
+  },
+  "stage_percentiles": {
+    "stt": {
+      "p50": 0.0,
+      "p70": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "p100": 0.0,
+      "min": 0.0,
+      "mean": 0.0,
+      "std": 0.0
+    },
+    "embedding": {
+      "p50": 0.15,
+      "p70": 0.18,
+      "p90": 0.2,
+      "p95": 0.22,
+      "p99": 0.23,
+      "p100": 0.24,
+      "min": 0.0,
+      "mean": 0.14,
+      "std": 0.06
+    },
+    "retrieval": {
+      "p50": 0.13,
+      "p70": 0.14,
+      "p90": 0.16,
+      "p95": 0.16,
+      "p99": 0.25,
+      "p100": 0.31,
+      "min": 0.0,
+      "mean": 0.13,
+      "std": 0.04
+    },
+    "guardrails": {
+      "p50": 0.14,
+      "p70": 0.15,
+      "p90": 0.16,
+      "p95": 0.17,
+      "p99": 0.41,
+      "p100": 0.59,
+      "min": 0.01,
+      "mean": 0.12,
+      "std": 0.09
+    },
+    "llm_generation": {
+      "p50": 0.03,
+      "p70": 0.03,
+      "p90": 0.04,
+      "p95": 0.04,
+      "p99": 0.06,
+      "p100": 0.07,
+      "min": 0.0,
+      "mean": 0.02,
+      "std": 0.02
+    },
+    "total_pipeline": {
+      "p50": 0.43,
+      "p70": 0.49,
+      "p90": 0.53,
+      "p95": 0.57,
+      "p99": 0.89,
+      "p100": 1.19,
+      "min": 0.01,
+      "mean": 0.41,
+      "std": 0.17
+    }
+  },
+  "query_log": [
+    {
+      "query": "When did Chandrayaan-3 land on the Moon?",
+      "domain": "Space Science & Technology",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 1.19,
+      "retrieval_ms": 0.311,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "What are the names of the lander and rover in Chandrayaan-3?",
+      "domain": "Space Science & Technology",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.57,
+      "retrieval_ms": 0.191,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u091a\u0902\u0926\u094d\u0930\u092f\u093e\u0928-3 \u0915\u092c \u0932\u0949\u0928\u094d\u091a \u0939\u0941\u0906 \u0925\u093e?",
+      "domain": "Space Science & Technology",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.38,
+      "retrieval_ms": 0.159,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "Who is the Prime Minister of Moon?",
+      "domain": "Space Science & Technology",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.5,
+      "retrieval_ms": 0.163,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "What are the three doshas in Ayurveda?",
+      "domain": "Healthcare & Medicine",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.45,
+      "retrieval_ms": 0.143,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u0906\u092f\u0941\u0930\u094d\u0935\u0947\u0926 \u092e\u0947\u0902 \u0924\u0940\u0928 \u0926\u094b\u0937 \u0915\u094c\u0928 \u0938\u0947 \u0939\u0948\u0902?",
+      "domain": "Healthcare & Medicine",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.25,
+      "retrieval_ms": 0.11,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "What is the primary treatment in Ayurveda?",
+      "domain": "Healthcare & Medicine",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.41,
+      "retrieval_ms": 0.134,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "How to build a quantum computer using Ayurveda?",
+      "domain": "Healthcare & Medicine",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.5,
+      "retrieval_ms": 0.141,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "Which states do the Western Ghats pass through?",
+      "domain": "Ecology & Geography",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.46,
+      "retrieval_ms": 0.132,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u09aa\u09b6\u09cd\u099a\u09bf\u09ae\u0998\u09be\u099f \u09aa\u09b0\u09cd\u09ac\u09a4\u09ae\u09be\u09b2\u09be \u0995\u09cb\u09a8 \u0995\u09cb\u09a8 \u09b0\u09be\u099c\u09cd\u09af\u09c7\u09b0 \u09ae\u09a7\u09cd\u09af\u09c7 \u09ac\u09bf\u09b8\u09cd\u09a4\u09c3\u09a4?",
+      "domain": "Ecology & Geography",
+      "language": "bn",
+      "answerable": true,
+      "total_ms": 0.31,
+      "retrieval_ms": 0.108,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u092a\u0936\u094d\u091a\u093f\u092e\u0940 \u0918\u093e\u091f \u0915\u093f\u0928 \u0930\u093e\u091c\u094d\u092f\u094b\u0902 \u0938\u0947 \u0917\u0941\u091c\u0930\u0924\u0947 \u0939\u0948\u0902?",
+      "domain": "Ecology & Geography",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.25,
+      "retrieval_ms": 0.103,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "How many species of mammals live in the Sahara desert?",
+      "domain": "Ecology & Geography",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.37,
+      "retrieval_ms": 0.138,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "Who developed the Unified Payments Interface (UPI)?",
+      "domain": "Fintech & Banking",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.5,
+      "retrieval_ms": 0.14,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u092f\u0942\u092a\u0940\u0906\u0908 \u0915\u094b \u0915\u093f\u0938\u0928\u0947 \u0935\u093f\u0915\u0938\u093f\u0924 \u0915\u093f\u092f\u093e \u0939\u0948?",
+      "domain": "Fintech & Banking",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.25,
+      "retrieval_ms": 0.106,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "What security mechanism is used by UPI?",
+      "domain": "Fintech & Banking",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.44,
+      "retrieval_ms": 0.138,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "Can UPI be used to travel to Mars?",
+      "domain": "Fintech & Banking",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.43,
+      "retrieval_ms": 0.134,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "What is India's non-fossil energy target for 2030?",
+      "domain": "Energy & Sustainability",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.48,
+      "retrieval_ms": 0.141,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u092d\u093e\u0926\u0932\u093e \u0938\u094b\u0932\u0930 \u092a\u093e\u0930\u094d\u0915 \u0915\u0939\u093e\u0901 \u0938\u094d\u0925\u093f\u0924 \u0939\u0948 \u0914\u0930 \u0907\u0938\u0915\u0940 \u0915\u094d\u0937\u092e\u0924\u093e \u0915\u094d\u092f\u093e \u0939\u0948?",
+      "domain": "Energy & Sustainability",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.31,
+      "retrieval_ms": 0.107,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "Where is the Bhadla Solar Park located?",
+      "domain": "Energy & Sustainability",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.44,
+      "retrieval_ms": 0.131,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "Explain how to bake a chocolate cake using solar ovens",
+      "domain": "Energy & Sustainability",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.49,
+      "retrieval_ms": 0.128,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "What was the standardized brick ratio in the Indus Valley Civilization?",
+      "domain": "History & Archaeology",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.58,
+      "retrieval_ms": 0.152,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "\u0938\u093f\u0902\u0927\u0941 \u0918\u093e\u091f\u0940 \u0938\u092d\u094d\u092f\u0924\u093e \u092e\u0947\u0902 \u091c\u0932 \u0928\u093f\u0915\u093e\u0938\u0940 \u0935\u094d\u092f\u0935\u0938\u094d\u0925\u093e \u0915\u0940 \u0915\u094d\u092f\u093e \u0935\u093f\u0936\u0947\u0937\u0924\u093e\u090f\u0902 \u0925\u0940\u0902?",
+      "domain": "History & Archaeology",
+      "language": "hi",
+      "answerable": true,
+      "total_ms": 0.42,
+      "retrieval_ms": 0.145,
+      "abstained": true,
+      "sub_200ms": true
+    },
+    {
+      "query": "What are the major cities of the Harappan Civilization?",
+      "domain": "History & Archaeology",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.53,
+      "retrieval_ms": 0.158,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "Who invented the iPhone during the Harappan period?",
+      "domain": "History & Archaeology",
+      "language": "en",
+      "answerable": false,
+      "total_ms": 0.49,
+      "retrieval_ms": 0.142,
+      "abstained": false,
+      "sub_200ms": true
+    },
+    {
+      "query": "How does a qubit differ from a classical bit?",
+      "domain": "Computer Science & Quantum Physics",
+      "language": "en",
+      "answerable": true,
+      "total_ms": 0.49,
+      "retrieval_ms": 0.131,
+      "abstained": false,
+      "sub_200ms": true
+    }
+  ],
+  "timestamp": "2026-08-20T19:25:57.497593"
+}
