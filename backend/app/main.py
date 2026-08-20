@@ -61,6 +61,7 @@ class ConfigUpdateRequest(BaseModel):
 cached_benchmark_report: Optional[BenchmarkReport] = None
 
 @app.get("/api/health")
+@app.get("/health")
 async def health_check():
     return {
         "status": "healthy",
@@ -74,6 +75,7 @@ async def health_check():
     }
 
 @app.post("/api/voice/query")
+@app.post("/voice/query")
 async def process_voice_query(
     file: UploadFile = File(...),
     engine: str = Form("sarvam"),
@@ -100,6 +102,7 @@ async def process_voice_query(
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/text/query")
+@app.post("/text/query")
 async def process_text_query(req: TextQueryRequest):
     try:
         response = await orchestrator.process_query(
@@ -115,6 +118,7 @@ async def process_text_query(req: TextQueryRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/chunking/compare")
+@app.post("/chunking/compare")
 async def compare_chunking(req: ChunkingCompareRequest):
     try:
         metadata = {
@@ -133,6 +137,7 @@ async def compare_chunking(req: ChunkingCompareRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/dataset/documents")
+@app.get("/dataset/documents")
 async def get_dataset_docs():
     return {
         "dataset_name": settings.DATASET_NAME,
@@ -142,6 +147,7 @@ async def get_dataset_docs():
     }
 
 @app.get("/api/benchmark/run")
+@app.get("/benchmark/run")
 async def run_benchmark(count: int = 50, strategy: str = "semantic_splitting"):
     global cached_benchmark_report
     try:
@@ -157,6 +163,7 @@ async def run_benchmark(count: int = 50, strategy: str = "semantic_splitting"):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/api/benchmark/latest")
+@app.get("/benchmark/latest")
 async def get_latest_benchmark():
     global cached_benchmark_report
     if cached_benchmark_report is None:
@@ -168,6 +175,7 @@ async def get_latest_benchmark():
     return cached_benchmark_report
 
 @app.post("/api/config/update")
+@app.post("/config/update")
 async def update_configuration(req: ConfigUpdateRequest):
     if req.sarvam_api_key is not None:
         settings.SARVAM_API_KEY = req.sarvam_api_key
@@ -191,7 +199,8 @@ async def update_configuration(req: ConfigUpdateRequest):
         "elevenlabs_configured": bool(settings.ELEVENLABS_API_KEY)
     }
 
-# Mount frontend build if directory exists
-frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
-if os.path.exists(frontend_dist):
-    app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+# Mount frontend build if directory exists and not on serverless
+if os.environ.get("VERCEL") is None:
+    frontend_dist = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+    if os.path.exists(frontend_dist):
+        app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
