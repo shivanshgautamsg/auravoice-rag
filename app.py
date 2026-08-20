@@ -18,18 +18,6 @@ if current_dir in sys.path:
     sys.path.append(current_dir)
 
 import gradio as gr
-
-try:
-    import spaces
-    gpu_decorator = spaces.GPU
-except Exception:
-    def gpu_decorator(func=None, **kwargs):
-        if func is not None:
-            return func
-        def decorator(f):
-            return f
-        return decorator
-
 from app.harness.orchestrator import orchestrator
 from app.chunking.comparator import chunking_comparator
 from app.analytics.benchmark import benchmark_runner
@@ -38,27 +26,30 @@ from app.config import settings
 
 # --- Gradio UI Logic ---
 
-@gpu_decorator
-async def handle_voice_query(audio_path, text_query, engine, language, strategy, top_k):
-    if audio_path:
-        with open(audio_path, "rb") as f:
-            audio_bytes = f.read()
-        res = await orchestrator.process_voice(
-            audio_bytes=audio_bytes,
-            engine_name=engine,
-            language_code=language,
-            strategy=strategy,
-            top_k=int(top_k)
-        )
-    elif text_query and text_query.strip():
-        res = await orchestrator.process_query(
-            query_text=text_query.strip(),
-            strategy=strategy,
-            top_k=int(top_k),
-            language=language.split("-")[0]
-        )
-    else:
-        return "⚠️ Please speak via microphone, upload an audio file, or enter a text question.", "N/A", "N/A", {}
+def handle_voice_query(audio_path, text_query, engine, language, strategy, top_k):
+    async def _async_exec():
+        if audio_path:
+            with open(audio_path, "rb") as f:
+                audio_bytes = f.read()
+            return await orchestrator.process_voice(
+                audio_bytes=audio_bytes,
+                engine_name=engine,
+                language_code=language,
+                strategy=strategy,
+                top_k=int(top_k)
+            )
+        elif text_query and text_query.strip():
+            return await orchestrator.process_query(
+                query_text=text_query.strip(),
+                strategy=strategy,
+                top_k=int(top_k),
+                language=language.split("-")[0]
+            )
+        return None
+
+    res = asyncio.run(_async_exec())
+    if not res:
+        return "⚠️ Please speak via microphone, upload an audio file, or enter a text question.", "N/A", "N/A", "N/A"
 
     bd = res.latency_breakdown
     sla_badge = "⚡ SUB-200MS SLA PASSED" if bd.sub_200ms_target_met else "⚠️ EXCEEDED 200MS"
@@ -83,7 +74,6 @@ async def handle_voice_query(audio_path, text_query, engine, language, strategy,
 
     return res.answer, latency_summary, citations_md, verdicts_summary
 
-@gpu_decorator
 def handle_chunking_compare(text, title, domain):
     if not text or not text.strip():
         return "Please enter text to compare."
@@ -105,13 +95,12 @@ def handle_chunking_compare(text, title, domain):
         
     return "\n".join(out)
 
-@gpu_decorator
-async def handle_run_benchmark(count, strategy):
-    report = await benchmark_runner.run_benchmark(
+def handle_run_benchmark(count, strategy):
+    report = asyncio.run(benchmark_runner.run_benchmark(
         orchestrator=orchestrator,
         query_count=int(count),
         strategy=strategy
-    )
+    ))
     p = report.percentiles
     sp = report.stage_percentiles
 
@@ -144,11 +133,6 @@ async def handle_run_benchmark(count, strategy):
     return md
 
 # --- Build Gradio Interface ---
-
-custom_css = """
-body { background-color: #07090e; color: #f8fafc; }
-.gradio-container { max-width: 1200px !important; margin: auto; }
-"""
 
 with gr.Blocks(title="AuraVoice RAG - HH Goa 2026") as demo:
     gr.HTML("""
