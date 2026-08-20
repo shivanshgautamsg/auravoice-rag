@@ -18,6 +18,18 @@ if current_dir in sys.path:
     sys.path.append(current_dir)
 
 import gradio as gr
+
+try:
+    import spaces
+    gpu_decorator = spaces.GPU
+except Exception:
+    def gpu_decorator(func=None, **kwargs):
+        if func is not None:
+            return func
+        def decorator(f):
+            return f
+        return decorator
+
 from app.harness.orchestrator import orchestrator
 from app.chunking.comparator import chunking_comparator
 from app.analytics.benchmark import benchmark_runner
@@ -26,6 +38,7 @@ from app.config import settings
 
 # --- Gradio UI Logic ---
 
+@gpu_decorator
 async def handle_voice_query(audio_path, text_query, engine, language, strategy, top_k):
     if audio_path:
         with open(audio_path, "rb") as f:
@@ -70,6 +83,7 @@ async def handle_voice_query(audio_path, text_query, engine, language, strategy,
 
     return res.answer, latency_summary, citations_md, verdicts_summary
 
+@gpu_decorator
 def handle_chunking_compare(text, title, domain):
     if not text or not text.strip():
         return "Please enter text to compare."
@@ -91,6 +105,7 @@ def handle_chunking_compare(text, title, domain):
         
     return "\n".join(out)
 
+@gpu_decorator
 async def handle_run_benchmark(count, strategy):
     report = await benchmark_runner.run_benchmark(
         orchestrator=orchestrator,
