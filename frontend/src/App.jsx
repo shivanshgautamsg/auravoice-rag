@@ -5,7 +5,6 @@ import ChunkingLab from './components/ChunkingLab';
 import LatencyDashboard from './components/LatencyDashboard';
 import GuardrailsView from './components/GuardrailsView';
 import HarnessTrace from './components/HarnessTrace';
-import SubmissionGuide from './components/SubmissionGuide';
 import { fetchHealth } from './utils/api';
 
 export default function App() {
@@ -35,7 +34,6 @@ export default function App() {
         {activeTab === 'latency' && <LatencyDashboard />}
         {activeTab === 'guardrails' && <GuardrailsView />}
         {activeTab === 'harness' && <HarnessTrace />}
-        {activeTab === 'submission' && <SubmissionGuide />}
       </main>
 
       <footer style={{

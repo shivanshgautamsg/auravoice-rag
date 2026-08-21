@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mic, GitFork, BarChart3, ShieldCheck, Terminal, FileText, Github, ExternalLink, Activity } from 'lucide-react';
+import { Mic, GitFork, BarChart3, ShieldCheck, Terminal, Github, ExternalLink, Activity } from 'lucide-react';
 
 export default function Header({ activeTab, setActiveTab, health, onRefreshHealth }) {
   const tabs = [
@@ -7,8 +7,7 @@ export default function Header({ activeTab, setActiveTab, health, onRefreshHealt
     { id: 'chunking', label: 'Chunking Lab', icon: GitFork },
     { id: 'latency', label: 'Latency (P50/P70/P100)', icon: BarChart3 },
     { id: 'guardrails', label: 'Guardrails', icon: ShieldCheck },
-    { id: 'harness', label: 'Agent Harness', icon: Terminal },
-    { id: 'submission', label: 'Submission Kit', icon: FileText }
+    { id: 'harness', label: 'Agent Harness', icon: Terminal }
   ];
 
   return (
