@@ -39,26 +39,26 @@ export default function App() {
       </main>
 
       <footer style={{
-        padding: '24px 0',
-        marginTop: '32px',
+        padding: '20px 0',
+        marginTop: '28px',
         borderTop: '1px solid var(--border-subtle)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
         gap: '12px',
-        fontSize: '0.82rem',
+        fontSize: '0.78rem',
         color: 'var(--text-muted)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span>AuraVoice RAG — Built for <strong>HH Goa 2026 Task 2</strong></span>
-          <span style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)' }}>#RAGInGoa</span>
+          <span>AuraVoice RAG — Built for <strong>HH Goa 2026 (Task 2)</strong></span>
+          <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>#RAGInGoa</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span>Target Latency: <strong style={{ color: '#10b981' }}>&lt; 200ms</strong></span>
-          <span>Dataset: <strong>ai4bharat/MSMARCO-XI</strong></span>
-          <span>STT: <strong>Sarvam AI / ElevenLabs</strong></span>
+          <span>SLA Target: <strong style={{ color: '#34d399' }}>&lt; 200ms</strong></span>
+          <span>Corpus: <strong>ai4bharat/MSMARCO-XI</strong></span>
+          <span>STT: <strong>Sarvam AI & ElevenLabs</strong></span>
         </div>
       </footer>
     </div>

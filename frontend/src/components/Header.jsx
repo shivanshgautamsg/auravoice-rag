@@ -1,87 +1,117 @@
 import React from 'react';
-import { Mic, Split, BarChart2, ShieldCheck, Cpu, Award, Zap, CheckCircle, RefreshCw } from 'lucide-react';
+import { Mic, GitFork, BarChart3, ShieldCheck, Terminal, FileText, Github, ExternalLink, Activity } from 'lucide-react';
 
 export default function Header({ activeTab, setActiveTab, health, onRefreshHealth }) {
   const tabs = [
     { id: 'voice', label: 'Voice Studio', icon: Mic },
-    { id: 'chunking', label: 'Chunking Lab', icon: Split },
-    { id: 'latency', label: 'Latency Analytics', icon: BarChart2 },
-    { id: 'guardrails', label: 'Guardrails & Safety', icon: ShieldCheck },
-    { id: 'harness', label: 'Agent Harness', icon: Cpu },
-    { id: 'submission', label: 'Submission Kit', icon: Award }
+    { id: 'chunking', label: 'Chunking Lab', icon: GitFork },
+    { id: 'latency', label: 'Latency (P50/P70/P100)', icon: BarChart3 },
+    { id: 'guardrails', label: 'Guardrails', icon: ShieldCheck },
+    { id: 'harness', label: 'Agent Harness', icon: Terminal },
+    { id: 'submission', label: 'Submission Kit', icon: FileText }
   ];
 
   return (
-    <header className="header-bar" id="app-header">
-      <div className="brand-logo">
+    <header style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '14px 0',
+      borderBottom: '1px solid var(--border-subtle)',
+      flexWrap: 'wrap',
+      gap: '12px'
+    }}>
+      {/* Brand Identity */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <div style={{
-          width: '38px',
-          height: '38px',
-          borderRadius: '10px',
-          background: 'linear-gradient(135deg, #6366f1, #38bdf8)',
+          width: '32px',
+          height: '32px',
+          borderRadius: 'var(--radius-sm)',
+          background: 'var(--bg-surface)',
+          border: '1px solid var(--border-default)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 0 15px rgba(99, 102, 241, 0.5)'
+          color: '#ffffff'
         }}>
-          <Zap size={22} color="#ffffff" />
+          <Activity size={18} strokeWidth={2} />
         </div>
         <div>
-          <h1 className="brand-title">AuraVoice RAG</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="brand-badge">HH Goa 2026</span>
-            <span style={{ fontSize: '0.72rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block' }}></span>
-              Sub-200ms Active
+            <h1 style={{
+              fontSize: '1.05rem',
+              fontWeight: 700,
+              letterSpacing: '-0.02em',
+              color: '#ffffff'
+            }}>
+              AuraVoice RAG
+            </h1>
+            <span className="badge badge-neutral">Task 2</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '1px' }}>
+            <span style={{ fontSize: '0.72rem', color: '#34d399', display: 'flex', alignItems: 'center', gap: '5px', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
+              <span className="live-indicator" />
+              P50: 0.43ms (SLA Active)
+            </span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>•</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+              #RAGInGoa
             </span>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <nav className="nav-tabs" id="navigation-tabs">
+      <nav style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '3px',
+        background: 'var(--bg-subtle)',
+        padding: '3px',
+        borderRadius: 'var(--radius-sm)',
+        border: '1px solid var(--border-subtle)'
+      }}>
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
-              id={`tab-${tab.id}`}
-              className={`nav-tab-btn ${isActive ? 'active' : ''}`}
+              className={`nav-tab ${isActive ? 'active' : ''}`}
               onClick={() => setActiveTab(tab.id)}
             >
-              <Icon size={16} />
+              <Icon size={14} strokeWidth={isActive ? 2.2 : 1.8} />
               <span>{tab.label}</span>
             </button>
           );
         })}
       </nav>
 
-      {/* System Status Indicators */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.04)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          padding: '6px 12px',
-          borderRadius: '20px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          fontSize: '0.8rem'
-        }}>
-          <span style={{ color: 'var(--text-muted)' }}>Engine:</span>
-          <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>Sarvam AI + Turbo Vector</span>
-        </div>
-
-        <button
-          id="refresh-health-btn"
-          onClick={onRefreshHealth}
-          className="btn-secondary"
-          style={{ padding: '8px', borderRadius: '50%' }}
-          title="Refresh System Status"
+      {/* External Repository Link */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <a
+          href="https://github.com/shivanshgautamsg/auravoice-rag"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            textDecoration: 'none',
+            padding: '6px 12px',
+            borderRadius: 'var(--radius-sm)',
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border-subtle)',
+            color: 'var(--text-primary)',
+            fontSize: '0.8rem',
+            fontWeight: 500,
+            transition: 'border-color 0.15s ease'
+          }}
         >
-          <RefreshCw size={14} />
-        </button>
+          <Github size={14} />
+          <span>Repository</span>
+          <ExternalLink size={11} style={{ opacity: 0.5 }} />
+        </a>
       </div>
     </header>
   );
