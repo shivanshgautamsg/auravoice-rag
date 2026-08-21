@@ -49,8 +49,7 @@ export default function App() {
         color: 'var(--text-muted)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <span>AuraVoice RAG — Built for <strong>HH Goa 2026 (Task 2)</strong></span>
-          <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>#RAGInGoa</span>
+          <span>AuraVoice — Real-Time Voice-Enabled RAG Engine</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>

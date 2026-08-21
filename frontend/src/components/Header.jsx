@@ -43,18 +43,14 @@ export default function Header({ activeTab, setActiveTab, health, onRefreshHealt
               letterSpacing: '-0.02em',
               color: '#ffffff'
             }}>
-              AuraVoice RAG
+              AuraVoice
             </h1>
-            <span className="badge badge-neutral">Task 2</span>
+            <span className="badge badge-neutral">v1.0.0</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '1px' }}>
             <span style={{ fontSize: '0.72rem', color: '#34d399', display: 'flex', alignItems: 'center', gap: '5px', fontFamily: 'var(--font-mono)', fontWeight: 600 }}>
               <span className="live-indicator" />
-              P50: 0.43ms (SLA Active)
-            </span>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>•</span>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-              #RAGInGoa
+              P50: 0.43ms (Sub-200ms SLA Active)
             </span>
           </div>
         </div>
