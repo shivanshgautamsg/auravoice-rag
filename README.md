@@ -217,11 +217,3 @@ hh_goa_voice_rag/
 └── README.md
 ```
 
----
-
-## 🎬 Submission Deliverables & Social Media
-
-- **Official Form Link**: [https://forms.gle/MNvCjcv23Hn2Eeu58](https://forms.gle/MNvCjcv23Hn2Eeu58)
-- **Video 1 (90s Team/Process)**: Script in [docs/VIDEO_SCRIPTS.md](docs/VIDEO_SCRIPTS.md)
-- **Video 2 (End-to-End Demo)**: Script in [docs/VIDEO_SCRIPTS.md](docs/VIDEO_SCRIPTS.md)
-- **Promotion Hashtag**: `#RAGInGoa`
